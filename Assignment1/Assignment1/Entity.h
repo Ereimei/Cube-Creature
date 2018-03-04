@@ -24,7 +24,7 @@ public:
 
 	inline void setScale(glm::vec3 scale) { this->scale = scale; }
 	inline void setPosition(glm::vec3 position) { this->position = position; }
-	inline void translate(float x, float z) { this->position = glm::vec3(position.x + x, position.y, position.z + z); }
+	inline void translate(float x, float y, float z) { this->position = glm::vec3(position.x + x, position.y + y, position.z + z); }
 	inline void scaling(float x) { this->scale = glm::vec3(x, x, x) * scale; }
 
 	void resetRotation();
