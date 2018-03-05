@@ -32,4 +32,5 @@
 *.app
 
 #visual studio settings
-.vs/*
+**/.vs/*
+**/Debug/*
