@@ -1,8 +1,17 @@
 #include "World.h"
 #include "Colors.h"
+#include "stb_image.h"
 
-void World::draw(GLenum drawMode, GLuint mm_addr, GLuint color_addr) {
+void World::draw(GLenum drawMode, GLuint mm_addr, GLuint color_addr, bool depthPass) {
 	
+	//drawGrid(mm_addr, color_addr);
+
+	for (int i = 0; i < entities.size(); i++) {
+		entities[i]->draw(drawMode, mm_addr, color_addr, depthPass);
+	}
+}
+
+void World::drawGrid(GLuint mm_addr, GLuint color_addr) {
 	glUniformMatrix4fv(mm_addr, 1, false, glm::value_ptr(getModelMatrix()));
 	glUniform4fv(color_addr, 1, Colors::black);
 
@@ -38,8 +47,4 @@ void World::draw(GLenum drawMode, GLuint mm_addr, GLuint color_addr) {
 	glVertex3f(0, 0.01, 0);
 	glVertex3f(0, 0.01, 5);
 	glEnd();
-
-	for (int i = 0; i < entities.size(); i++) {
-		entities[i]->draw(drawMode, mm_addr, color_addr);;
-	}
 }

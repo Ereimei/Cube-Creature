@@ -26,7 +26,6 @@ void Entity::resetRotation() {
 }
 
 void Entity::rotate(float angle, bool up) {
-
 	if (up) {
 		// rotating up changes the direction of up and forwards
 		glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::radians(angle), this->right);
@@ -36,6 +35,22 @@ void Entity::rotate(float angle, bool up) {
 	else {
 		// rotating sideways changes the direction of forwards and right
 		glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::radians(angle), this->up);
+		this->right = glm::normalize(glm::vec3(rotation * glm::vec4(this->right, 1)));
+		this->direction = glm::normalize(glm::vec3(rotation * glm::vec4(this->direction, 1)));
+	}
+}
+
+void Entity::rotateDelta(float angle, bool up, float deltaTime) {
+	float velocity = this->speed * deltaTime;
+	if (up) {
+		// rotating up changes the direction of up and forwards
+		glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::radians(angle)*velocity, this->right);
+		this->up = glm::normalize(glm::vec3(rotation * glm::vec4(this->up, 1)));
+		this->direction = glm::normalize(glm::vec3(rotation * glm::vec4(this->direction, 1)));
+	}
+	else {
+		// rotating sideways changes the direction of forwards and right
+		glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::radians(angle)*velocity, this->up);
 		this->right = glm::normalize(glm::vec3(rotation * glm::vec4(this->right, 1)));
 		this->direction = glm::normalize(glm::vec3(rotation * glm::vec4(this->direction, 1)));
 	}

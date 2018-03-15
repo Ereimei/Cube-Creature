@@ -9,23 +9,39 @@
 #include <glew.h>
 #include <time.h>
 #include <vector>
+#include <string>
+#include <iostream>
 
 class Cube : public Entity {
 private:
 	const float* color;
 
-	GLuint vertexArrayID;
-	GLuint vertexBufferID;
+	// only load the vertices and texture once
+	static bool loaded;
+
+	//VAO
+	static GLuint vertexArrayID;
+	//VBO
+	static GLuint vertexBufferID;
+	//VBO_NORMAL
+	static GLuint vertexBufferNorm;
+	//VBUVO
+	static GLuint vertexBufferUV;
+	//Texture Offset
+	static GLuint textureIDHorse;
+	static GLuint textureIDGrass;
 
 	//vector
-	std::vector<glm::vec3> v;
+	static std::vector<glm::vec3> v;
 	//normalize vector
-	std::vector<glm::vec3> nv;
+	static std::vector<glm::vec3> nv;
 	//unit vector
-	std::vector<glm::vec2> uv;
+	static std::vector<glm::vec2> uv;
+
+	std::string type;
+
 public:
-	Cube(Entity* parent, const float* color);
-	
+	Cube(Entity* parent, const float* color, std::string type);
 	void randomLocation();
-	virtual void draw(GLenum mode, GLuint mm_addr, GLuint color_addr);
+	virtual void draw(GLenum mode, GLuint mm_addr, GLuint color_addr, bool depthPass);
 };

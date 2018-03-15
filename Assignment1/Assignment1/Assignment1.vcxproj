@@ -154,6 +154,7 @@
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -167,13 +168,27 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fragment.glsl" />
-    <None Include="Shader.glsl" />
+    <None Include="Fragment_color.glsl" />
+    <None Include="Fragment_depth.glsl" />
+    <None Include="Shader_color.glsl" />
+    <None Include="Shader_depth.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="UnitCube.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="grass_texture.jpg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+    <Image Include="horse_texture.jpg">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fragment_texture.glsl" />
+    <Text Include="Shader_texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

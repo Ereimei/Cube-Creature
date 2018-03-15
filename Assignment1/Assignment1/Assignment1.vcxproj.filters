@@ -36,6 +36,9 @@
     <ClInclude Include="Colors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assignment1.cpp">
@@ -61,10 +64,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Fragment.glsl">
+    <None Include="Fragment_color.glsl">
       <Filter>Source Files\Shaders</Filter>
     </None>
-    <None Include="Shader.glsl">
+    <None Include="Shader_color.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Fragment_depth.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shader_depth.glsl">
       <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>
@@ -72,5 +81,21 @@
     <Object Include="UnitCube.obj">
       <Filter>Resource Files</Filter>
     </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="horse_texture.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="grass_texture.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fragment_texture.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </Text>
+    <Text Include="Shader_texture.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>

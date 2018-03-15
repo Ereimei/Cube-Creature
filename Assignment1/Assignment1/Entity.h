@@ -11,14 +11,14 @@
 class Entity {
 private:
 	glm::vec3 position = glm::vec3(0, 0, 0);
-	glm::vec3 scale = glm::vec3(.5, .5, .5);
-
-	glm::vec3 scaleRatio = glm::vec3(1, 1, 1);
+	glm::vec3 scale = glm::vec3(1, 1, 1);
 
 	float angle = 0;
 	glm::vec3 direction = glm::vec3(0, 0, 1);
 	glm::vec3 up = glm::vec3(0, 1, 0);
 	glm::vec3 right = glm::vec3(1, 0, 0);
+
+	float speed = 1;
 
 	Entity* parent;
 public:
@@ -31,6 +31,9 @@ public:
 
 	void resetRotation();
 	void rotate(float angle, bool up);
-	virtual void draw(GLenum drawMode, GLuint mm_addr, GLuint color_addr) = 0;
+	void rotateDelta(float angle, bool up, float deltaTime);
+	virtual void draw(GLenum drawMode, GLuint mm_addr, GLuint color_addr, bool depthPass) = 0;
 	const glm::mat4 getModelMatrix();
+	glm::vec3 getPosition() { return this->position; };
+
 };
